@@ -53,19 +53,19 @@
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     drawBall();
                     drawPaddle();
-
                     if(x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
                         dx = -dx;
                     }
-                    if(y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+                    if(y + dy < ballRadius) {
                         dy = -dy;
                      } else if(y + dy > canvas.height - ballRadius) {
-                        alert("GAME OVER");
-                        document.location.reload();
+                        if(x > paddleX && x < paddleX + paddleWidth) {
+                            dy = -dy;
+                        } else {
+                          alert("GAME OVER");
+                          document.location.reload();
+                        }   
                      }
-                     
-
-
                     if(rightPressed && paddleX < canvas.width - paddleWidth) {
                         paddleX += 7;
                     } else if (leftPressed && paddleX > 0) {
@@ -73,30 +73,30 @@
                     }
                     x += dx;
                     y += dy;
-                    }
+                 }
             
-                    setInterval(draw, 10);
+                setInterval(draw, 10);
                             
 
 
-        // ctx.beginPath();
-        // ctx.rect(20, 40, 50, 50);
-        // ctx.fillStyle = "#FF0000";
-        // ctx.fill();
-        // ctx.closePath();
+        ctx.beginPath();
+        ctx.rect(20, 40, 50, 50);
+        ctx.fillStyle = "#FF0000";
+        ctx.fill();
+        ctx.closePath();
 
-        // ctx.beginPath();
-        // ctx.arc(240, 160, 20, 0, Math.PI * 2, false);
-        // ctx.fillStyle = "green";
-        // ctx.fill();
-        // ctx.closePath();
+        ctx.beginPath();
+        ctx.arc(240, 160, 20, 0, Math.PI * 2, false);
+        ctx.fillStyle = "green";
+        ctx.fill();
+        ctx.closePath();
 
-        // ctx.beginPath();
-        // ctx.rect(160, 10, 100, 40);
-        // ctx.strokeStyle = "rgba(0, 0, 225, 0.5)";
-        // ctx.stroke();
+        ctx.beginPath();
+        ctx.rect(160, 10, 100, 40);
+        ctx.strokeStyle = "rgba(0, 0, 225, 0.5)";
+        ctx.stroke();
 
-        // ctx.closePath();
+        ctx.closePath();
 
         
 
